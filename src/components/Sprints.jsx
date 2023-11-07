@@ -94,10 +94,13 @@ function Sprints() {
         const sprintData = await response.json();
         setSprints(sprintData);
 
-        // Sort and slice the array first to get the last 5 sprints
-        const recentSprints = sprintData
-          .sort((a, b) => new Date(b.startDate) - new Date(a.startDate))
-          .slice(0, 5);
+        // Find the index of the current sprint using the timeFrame property
+        const currentIndex = sprintData.findIndex(sprint => sprint.timeFrame === 'current');
+
+        // If there is a current sprint, slice the array from the current sprint backwards by 5 sprints
+        const recentSprints = currentIndex >= 0
+          ? sprintData.slice(Math.max(0, currentIndex - 4), currentIndex + 1).reverse()
+          : [];
 
         const velocities = await Promise.all(
           recentSprints.map(async (sprint) => {
