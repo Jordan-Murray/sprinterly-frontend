@@ -1,7 +1,7 @@
-// src/components/SprintDetailPage.js
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import config from '../config';
+import Header from './Header';
 
 function SprintDetailPage() {
   const [sprintDetails, setSprintDetails] = useState(null);
@@ -38,7 +38,8 @@ function SprintDetailPage() {
 
   return (
     <div className="flex flex-col items-center justify-start pt-10 h-screen text-white">
-      <h3 className="text-3xl font-bold mb-6">{sprintDetails.name}</h3>
+      <Header />
+      <h3 className="pt-20 text-3xl font-bold mb-6">{sprintDetails.name}</h3>
       <div className="w-full max-w-4xl px-4">
         {sprintDetails.teamMembers.map(member => (
           <div key={member.displayName} className="bg-gray-800 p-6 my-4 shadow-lg rounded-lg">

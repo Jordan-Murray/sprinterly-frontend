@@ -12,6 +12,7 @@ import {
   Text,
 } from "recharts";
 import config from '../config';
+import Header from './Header';
 
 function Sprints() {
   const [sprints, setSprints] = useState([]);
@@ -82,7 +83,6 @@ function Sprints() {
       (n_bug * sumXX_bug - sumX_bug * sumX_bug);
     let bug_intercept = (sumY_bug - bug_slope * sumX_bug) / n_bug;
 
-    // console.log("SlopeBug2", bug_slope);
     return { bug_slope, bug_intercept };
   }
 
@@ -155,7 +155,8 @@ function Sprints() {
 
   return (
     <>
-      <div className="w-full flex flex-col items-center mb-8">
+       <Header />
+       <div className="pt-20 w-full flex flex-col items-center mb-8">
         <h2 className="text-2xl font-bold text-white mb-4">Sprint Metrics</h2>
         <div
           style={{

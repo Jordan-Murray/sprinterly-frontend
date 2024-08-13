@@ -1,11 +1,14 @@
 export default function Card({ id, name, numberOfMembers, onClick }) {
   return (
     <div
-      className="cursor-pointer border border-gray-300 shadow-md rounded-md p-4 m-2 hover:bg-blue-100 hover:text-gray-800 transition-colors"
+      className="bg-background rounded-lg shadow-lg overflow-hidden cursor-pointer transition-transform transform hover:scale-105"
       onClick={() => onClick(id)}
     >
-      <h3 className="text-lg font-semibold">{name}</h3>
-      <p>{`Members: ${numberOfMembers}`}</p>
+      <div className="p-6">
+        <h3 className="text-xl font-semibold mb-2">{name}</h3>
+        <div className="text-4xl font-bold">{numberOfMembers}</div>
+        <p className="text-muted-foreground mt-1">Team Members</p>
+      </div>
     </div>
   );
 }

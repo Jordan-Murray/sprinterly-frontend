@@ -1,9 +1,8 @@
-// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import TeamList from './components/TeamList';
 import Sprints from './components/Sprints';
-import SprintDetailPage from './components/SprintDetailPage'; // New component for sprint details
+import SprintDetailPage from './components/SprintDetailPage';
 
 function App() {
   return (
@@ -11,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<TeamList />} />
         <Route path="/sprints/:teamId" element={<Sprints />} />
-        <Route path="/sprint/:teamId/:sprintId" element={<SprintDetailPage />} /> {/* New route */}
+        <Route path="/sprint/:teamId/:sprintId" element={<SprintDetailPage />} /> 
       </Routes>
     </Router>
   );
