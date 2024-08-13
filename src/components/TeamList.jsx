@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import { useNavigate } from 'react-router-dom';
+import config from '../config';
 
 function TeamList() {
   const [teams, setTeams] = useState([]);
@@ -12,7 +13,7 @@ function TeamList() {
     const fetchTeams = async () => {
         setLoading(true);
       try {
-        const response = await fetch('https://app-sprinterlyapi-dev-uksouth.azurewebsites.net/api/Streets-Heaver/31b8a614-ef73-47ad-8375-9fe47cb4a2d5/Teams');
+        const response = await fetch(`${config.API_BASE_URL}/Teams`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

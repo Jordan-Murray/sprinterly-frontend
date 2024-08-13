@@ -11,6 +11,7 @@ import {
   ResponsiveContainer,
   Text,
 } from "recharts";
+import config from '../config';
 
 function Sprints() {
   const [sprints, setSprints] = useState([]);
@@ -89,7 +90,7 @@ function Sprints() {
     const fetchSprints = async () => {
       try {
         const response = await fetch(
-          `https://app-sprinterlyapi-dev-uksouth.azurewebsites.net/api/Streets-Heaver/31b8a614-ef73-47ad-8375-9fe47cb4a2d5/Sprints/${teamId}`
+          `${config.API_BASE_URL}/Sprints/${teamId}`
         );
         const sprintData = await response.json();
         setSprints(sprintData);
@@ -105,7 +106,7 @@ function Sprints() {
         const velocities = await Promise.all(
           recentSprints.map(async (sprint) => {
             const response = await fetch(
-              `https://app-sprinterlyapi-dev-uksouth.azurewebsites.net/api/Streets-Heaver/31b8a614-ef73-47ad-8375-9fe47cb4a2d5/Teams/${teamId}/sprint/${sprint.id}`
+              `${config.API_BASE_URL}/Teams/${teamId}/sprint/${sprint.id}`
             );
             const details = await response.json();
             const totalVelocity = details.teamMembers.reduce(
